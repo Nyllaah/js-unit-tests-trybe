@@ -11,6 +11,28 @@
     - average([1, '2']) // Retorno: undefined;
 */
 
-const average = () => {};
+function verifyNumber(list) {
+  let isNumber = true;
+  for (let i = 0; i < list.length; i += 1) {
+    if (typeof list[i] !== 'number') {
+      isNumber = false;
+    }
+  } return isNumber;
+}
+
+const average = (list) => {
+  let result;
+  if (verifyNumber(list) === false || list.length === 0) {
+    result = undefined;
+  } else {
+    let lastResult = 0;
+    for (let i = 0; i < list.length; i += 1) {
+      lastResult += list[i];
+    }
+    result = Math.round(lastResult / list.length);
+  } return result;
+};
+
+console.log(average([]));
 
 module.exports = average;
