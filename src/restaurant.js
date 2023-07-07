@@ -1,10 +1,11 @@
 /* eslint-disable max-len */
 // Siga as orientações do README!
 
-const createMenu = (objeto) => {
-    return {
-        fetchMenu: objeto
-    }
+const createMenu = (menu) => {
+  let newMenu = {
+    fetchMenu: () => menu,
+  };
+  return newMenu;
 };
 
 module.exports = createMenu;
