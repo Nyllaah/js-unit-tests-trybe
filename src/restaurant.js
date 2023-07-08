@@ -23,7 +23,6 @@ const createMenu = (menu) => {
       let total = 0;
       for (let i = 0; i < inConsumption.length; i += 1) {
         let price = Object.values(inConsumption[i])[0];
-        console.log(price);
         total += price;
       }
       let tip = total * 0.1;
@@ -31,15 +30,5 @@ const createMenu = (menu) => {
     },
   };
 };
-
-let newMenu = createMenu({ food: { coxinha: 3.90, sanduiche: 9.90 }, drinks: { agua: 3.90, cerveja: 6.90 } });
-newMenu.order('agua');
-newMenu.order('cerveja');
-newMenu.order('coxinha');
-newMenu.order('cerveja');
-newMenu.order('cerveja');
-
-console.log(newMenu.consumption);
-console.log(newMenu.pay());
 
 module.exports = createMenu;
