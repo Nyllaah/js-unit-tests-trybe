@@ -33,6 +33,6 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
     expect(newMenu.consumption).toEqual([{coxinha: 3.90}, {agua: 3.90}, {cerveja: 6.90}, {cerveja: 6.90}, {cerveja: 6.90}]);
   })
   it('Verifica que, ao chamar a função pay() que será uma propriedade do objeto retornado pela função createMenu, deve retornar a soma dos preços de tudo que foi pedido, conforme registrado em consumption. A propriedade pay tem como valor uma função.', () => {
-    expect(newMenu.pay()).toEqual()
+    expect(newMenu.pay()).toEqual('31.35')
   })
 });

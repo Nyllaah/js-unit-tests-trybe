@@ -1,22 +1,6 @@
 /* eslint-disable max-len */
 // Siga as orientações do README!
 
-// const createMenu = (menu) => {
-//   let newMenu = {
-//     fetchMenu: () => menu,
-//     consumption: [],
-//     order: (item) => {
-//       let items = Object.values(newMenu.fetchMenu()).join(' ');
-//         if (items.includes(`${item}`)) {
-//           newMenu.consumption.push(item);
-//         } else {
-//           console.log('Item indisponível');
-//         }
-//     },
-//   };
-//   return newMenu;
-// };
-
 const createMenu = (menu) => {
   let inConsumption = [];
   return {
@@ -38,18 +22,24 @@ const createMenu = (menu) => {
     pay: () => {
       let total = 0;
       for (let i = 0; i < inConsumption.length; i += 1) {
-        total += Object.values(inConsumption[i])[0];
-        console.log(Object.values(inConsumption[i]));
-        console.log(total);
+        let price = Object.values(inConsumption[i])[0];
+        console.log(price);
+        total += price;
       }
+      let tip = total * 0.1;
+      return (total + tip).toFixed(2);
     },
   };
 };
 
-createMenu({ food: { coxinha: 3.90, sanduiche: 9.90 }, drinks: { agua: 3.90, cerveja: 6.90 } }).order('coxinha');
-createMenu({ food: { coxinha: 3.90, sanduiche: 9.90 }, drinks: { agua: 3.90, cerveja: 6.90 } }).order('agua');
-createMenu({ food: { coxinha: 3.90, sanduiche: 9.90 }, drinks: { agua: 3.90, cerveja: 6.90 } }).order('agua');
+let newMenu = createMenu({ food: { coxinha: 3.90, sanduiche: 9.90 }, drinks: { agua: 3.90, cerveja: 6.90 } });
+newMenu.order('agua');
+newMenu.order('cerveja');
+newMenu.order('coxinha');
+newMenu.order('cerveja');
+newMenu.order('cerveja');
 
-
+console.log(newMenu.consumption);
+console.log(newMenu.pay());
 
 module.exports = createMenu;
