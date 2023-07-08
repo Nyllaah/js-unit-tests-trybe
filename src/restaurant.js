@@ -6,7 +6,9 @@ const createMenu = (menu) => {
   return {
     fetchMenu: () => menu,
     order: (item) => {
-      let allItems = [...Object.entries(menu.food).map(([key, value]) => ({ [key]: value })), ...Object.entries(menu.drinks).map(([key, value]) => ({ [key]: value }))];
+      let food = [...Object.entries(menu.food).map(([key, value]) => ({ [key]: value }))];
+      let drinks = [...Object.entries(menu.drinks).map(([key, value]) => ({ [key]: value }))];
+      let allItems = [...food, ...drinks];
       let available = false;
       for (let i = 0; i < allItems.length; i += 1) {
         if (Object.keys(allItems[i])[0] === item) {
