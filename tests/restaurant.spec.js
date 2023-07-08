@@ -20,11 +20,19 @@ describe('10 - Implemente a função `createMenu`, bem como seus casos de teste'
   it('Verifica se, caso o valor passado por parâmetro para order não conste no objeto passado como parâmetro para createMenu (nem em food ou drinks), o retorno da chave order deve exibir a mensagem "Item indisponível" e não alterar a chave consumption.', () => {
     expect(createMenu({food: {coxinha: 3.90, sanduiche: 9.90}, drinks: {agua: 3.90, cerveja: 6.90}}).order('hamburguer')).toBe('Item indisponível');
     newMenu.order('coxinha');
-    expect(newMenu.consumption).toEqual(['coxinha']);
+    expect(newMenu.consumption).toEqual([{coxinha: 3.90}]);
   })
   it('Verifica se, ao adicionar três pedidos em sequência, dentre bebidas e comidas, o array consumption contém os itens pedidos.', () => {
     newMenu.order('agua');
     newMenu.order('cerveja');
-    expect(newMenu.consumption).toEqual(['coxinha', 'agua', 'cerveja']);
+    expect(newMenu.consumption).toEqual([{coxinha: 3.90}, {agua: 3.90}, {cerveja: 6.90}]);
+  })
+  it('verifica se a função order aceita que pedidos repetidos sejam acrescidos a consumption.', () => {
+    newMenu.order('cerveja');
+    newMenu.order('cerveja');
+    expect(newMenu.consumption).toEqual([{coxinha: 3.90}, {agua: 3.90}, {cerveja: 6.90}, {cerveja: 6.90}, {cerveja: 6.90}]);
+  })
+  it('Verifica que, ao chamar a função pay() que será uma propriedade do objeto retornado pela função createMenu, deve retornar a soma dos preços de tudo que foi pedido, conforme registrado em consumption. A propriedade pay tem como valor uma função.', () => {
+    expect(newMenu.pay()).toEqual()
   })
 });
